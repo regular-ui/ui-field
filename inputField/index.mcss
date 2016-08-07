@@ -1,0 +1,19 @@
+.m-inputField {
+    .inputField_message {
+        @extend .f-toe;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 160px;
+        height: 34px;
+        background: #f7f7f7;
+        $border: #ddd;
+        $border-radius: 3px;
+        padding: 6px 12px;
+        margin-bottom: 1px;
+        vertical-align: middle;
+    }
+
+    .u-input {
+        display: block;
+    }
+}

@@ -1,0 +1,13 @@
+<span class="u-inputField {class}" r-hide={!visible}>
+    <input class="u-input u-input-{state} u-input-{size} u-input-{width}"
+        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
+        r-model={value}
+        on-input={this._onInput($event)}
+        {#if _ltIE9}on-keyup={this._onKeyUp($event)}{/if}
+        on-focus={this._onFocus($event)}
+        on-blur={this._onBlur($event)}
+        on-change="change">
+    {#if unit}<span class="inputField_unit">{unit}</span>{/if}
+    {#if _eltIE9 && !value}<span class="inputField_placeholder">{placeholder}</span>{/if}
+    {#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+</span>

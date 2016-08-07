@@ -1,0 +1,33 @@
+{
+  "name": "rgui-ui-field",
+  "description": "Regular UI - InputField, TextField",
+  "version": "0.2.0-alpha",
+  "author": "Rainfore <rainforest92@126.com>",
+  "main": "./index.js",
+  "repository": "regular-ui/ui-field",
+  "homepage": "http://regular-ui.github.io",
+  "bugs": {
+    "url": "http://github.com/regular-ui/ui-field/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "regular",
+    "ui",
+    "rgui",
+    "field",
+    "input",
+    "textarea"
+  ],
+  "tags": [
+    "regular",
+    "ui",
+    "rgui",
+    "field",
+    "input",
+    "textarea"
+  ],
+  "dependencies": {
+    "rgui-ui-base": "^0.2.0-alpha.4",
+    "validator": "^5.5.0"
+  }
+}

@@ -1,0 +1,12 @@
+<span class="u-textField {class}" r-hide={!visible}>
+    <textarea class="u-textarea u-textarea-{state} u-textarea-{size} u-textarea-{width}"
+        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
+        r-model={value}
+        on-input={this._onInput($event)}
+        {#if _ltIE9}on-keyup={this._onKeyUp($event)}{/if}
+        on-focus={this._onFocus($event)}
+        on-blur={this._onBlur($event)}
+        on-change="change"></textarea>
+    {#if _eltIE9 && !value}<span class="textField_placeholder">{placeholder}</span>{/if}
+    {#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+</span>

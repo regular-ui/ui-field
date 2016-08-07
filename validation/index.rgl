@@ -1,0 +1,4 @@
+<div class="m-validation {class}" z-dis={disabled} r-hide={!visible}>
+    <span class="validation_message">{message}</span>
+    <input class="u-input" r-model={message} readonly={readonly} disabled={disabled} on-input={this._onInput($event)} />
+</div>
