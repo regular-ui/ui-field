@@ -1,19 +1,16 @@
-.m-inputField {
-    .inputField_message {
-        @extend .f-toe;
-        box-sizing: border-box;
-        display: inline-block;
-        width: 160px;
-        height: 34px;
-        background: #f7f7f7;
-        $border: #ddd;
-        $border-radius: 3px;
-        padding: 6px 12px;
-        margin-bottom: 1px;
-        vertical-align: middle;
-    }
+@import './core.mcss';
 
-    .u-input {
-        display: block;
+// Component:       `u-inputField`
+// ========================================================================
+
+.u-inputField {
+    .inputField_placeholder {
+        color: $field_placeholder_color;
+        padding: $field_padding;
+        border-left: 1px solid transparent;
     }
+}
+
+.u-inputField .u-tip {
+    margin-left: 4px;
 }

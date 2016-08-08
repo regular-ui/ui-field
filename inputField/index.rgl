@@ -3,7 +3,7 @@
         name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
         r-model={value}
         on-input={this._onInput($event)}
-        {#if _ltIE9}on-keyup={this._onKeyUp($event)}{/if}
+        {#if _ltIE9}on-propertychange={this._onInput($event)}{/if}
         on-focus={this._onFocus($event)}
         on-blur={this._onBlur($event)}
         on-change="change">

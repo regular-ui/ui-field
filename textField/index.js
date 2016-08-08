@@ -1,15 +1,14 @@
-import { Component } from 'rgui-ui-base';
-import { Validation } from '../validation';
+import Field from '../field';
 import template from './index.rgl';
 
 /**
  * @class TextField
- * @extend Component
+ * @extend Field
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
  * @param {string=''}               options.data.state              <=> 文本框的状态
  * @param {string=''}               options.data.tip                <=> 小贴示
- * @param {object[]=[]}             options.data.rules               => 验证规则
+ * @param {object[]=[]}             options.data.rules               => 验证规则集
  * @param {string=''}               options.data.placeholder         => 占位符
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
@@ -18,7 +17,7 @@ import template from './index.rgl';
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  */
-const TextField = Component.extend({
+const TextField = Field.extend({
     name: 'textField',
     template,
     /**

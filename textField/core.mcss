@@ -1,12 +1,15 @@
-@import './core.mcss';
-
 // Component:       `u-textField`
 // ========================================================================
 
 .u-textField {
+    display: inline-block;
+    position: relative;
+
     .textField_placeholder {
-        color: $field_placeholder_color;
-        padding: $field_padding;
-        border-left: 1px solid transparent;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
     }
 }

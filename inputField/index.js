@@ -1,6 +1,5 @@
 import Field from '../field';
 import template from './index.rgl';
-import { Validation } from '../validation';
 
 /**
  * @class InputField
@@ -10,7 +9,7 @@ import { Validation } from '../validation';
  * @param {string=''}               options.data.type                => 文本框的类型
  * @param {string=''}               options.data.state              <=> 文本框的状态
  * @param {string=''}               options.data.tip                <=> 小贴示
- * @param {object[]=[]}             options.data.rules               => 验证规则
+ * @param {object[]=[]}             options.data.rules               => 验证规则集
  * @param {string=''}               options.data.placeholder         => 占位符
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
@@ -46,8 +45,8 @@ const InputField = Field.extend({
      * @private
      */
     _onInput($event) {
-        this.validate('input');
         this.$emit('input', $event);
+        setTimeout(() => this.validate('input'), 0);
     },
     /**
      * @private
@@ -59,8 +58,8 @@ const InputField = Field.extend({
      * @private
      */
     _onBlur($event) {
-        this.validate('blur');
         this.$emit('blur', $event);
+        this.validate('blur');
     },
 });
 

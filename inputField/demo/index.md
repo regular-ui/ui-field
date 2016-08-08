@@ -1,35 +1,40 @@
 ## 示例
-
-在`index.md`文件中，添加该组件的基础文档示例。
-
-每个示例以`<div class="m-example"></div>`开头，后面添加相应的代码段。支持的代码段有：
-- `css`，会以`<style>`包裹css代码的形式添加到文档中；
-- `xml`，表示Regular模板，如果没有js代码段，会自动创建一个component对象，$inject到`.m-example`中；
-- `javascript`，添加js代码，请自行声明一个component对象。
-
 ### 基本形式
 
+基本用法与`<input>`一致。
+
 <div class="m-example"></div>
 
 ```xml
-<inputField />
+<label>密码：<inputField type="password" maxlength=6 placeholder="请输入密码" autofocus /></label>
 ```
 
-### Message属性
+### 单位
 
 <div class="m-example"></div>
 
 ```xml
-<inputField message="Test" />
+<label>速度：<inputField width="smw" value="340" unit="m/s" /></label>
 ```
 
-### 只读和禁用
+### 验证
+
+关于表单验证，详细请参见[表单验证](https://regular-ui.github.io/ui-field/validation/index.html)组件。
 
 <div class="m-example"></div>
 
 ```xml
-<div class="g-row">
-    <div class="g-col g-col-6"><inputField readonly /></div>
-    <div class="g-col g-col-6"><inputField disabled /></div>
-</div>
+<label>邮箱：<inputField rules={rules} maxlength=20 /></label>
+```
+
+```javascript
+let component = new RGUI.Component({
+    template,
+    data: {
+        rules: [
+            { type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' },
+            { type: 'isEmail', trigger: 'input+blur', message: '请输入正确的邮箱！' },
+        ],
+    },
+});
 ```

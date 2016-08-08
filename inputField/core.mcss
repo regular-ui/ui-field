@@ -1,0 +1,19 @@
+// Component:       `u-inputField`
+// ========================================================================
+
+.u-inputField {
+    display: inline-block;
+    position: relative;
+
+    .inputField_unit {
+        position: relative;
+        right: 40px;
+    }
+
+    .inputField_placeholder {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+}

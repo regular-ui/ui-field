@@ -1,6 +1,6 @@
 import { Component } from 'rgui-ui-base';
-import template from './index.rgl';
 import validator from 'validator';
+import '../util';
 
 /**
  * @class Validation
@@ -20,85 +20,114 @@ const Validation = Component.extend({
         this.supr();
     },
     /**
-     * @method validate() 验证所有表单组件
+     * @method validate() 验证所有内部的表单域
      * @public
      * @return {object} conclusion 结论
      */
-    validate: function() {
-        if(this.data.disabled) {
+    validate() {
+        if (this.data.disabled) {
             return {
                 success: true,
                 message: 'Validation is disabled.',
-            }
+            };
         }
 
-        var conclusion = {
+        const conclusion = {
             results: [],
             success: true,
             message: '',
         };
 
-        this.fields.forEach((field) => {
-            var result = field.validate();
+        let restCount = this.fields.length;
+        const done = function (result) {
+            delete result.sender;
             conclusion.results.push(result);
-            if(!result.success) {
+            if (!result.success) {
                 conclusion.success = false;
                 conclusion.message = conclusion.message || result.message;
             }
-        });
+
+            restCount--;
+            if (restCount === 0) {
+                /**
+                 * @event validate 验证表单时触发
+                 * @property {object} sender 事件发送对象
+                 * @property {boolean} success 验证是否通过
+                 * @property {string} message 验证不通过时的消息
+                 * @property {object} results 每个表单域的结果
+                 */
+                this.$emit('validate', Object.assign({
+                    sender: this,
+                }, conclusion));
+            }
+        };
+
+        this.fields.forEach((field) =>
+            field.$one('validate', done.bind(this)).validate());
 
         return conclusion;
     },
 });
 
-Validation.validate = function(value, rules, callback) {
-    let restCount = rules.length;
+/**
+ * @method validate(value,rules,callback) 根据规则验证单个值
+ * @static
+ * @public
+ * @param {var} value 待验证的值，会自动转为string类型
+ * @param {var} value 验证规则集
+ * @callback {object} result 验证结果
+ * @callback {boolean} result.success 验证是否正确
+ * @callback {string} result.message 验证不通过时的消息
+ * @callback {object} result.firstRule 第一条验证不通过的规则
+ */
+Validation.validate = function (value, rules, callback) {
     const result = {
         success: true,
-        message: ''
-    }
+        message: '',
+    };
 
+    value = validator.toString(value);
     rules.forEach((rule) => rule.success = false);
 
-    const done = function(success) {
-        var rule = this;
+    let restCount = rules.length;
+    const done = function (success) {
+        const rule = this;
         rule.success = success = !!success;
 
-        if(!success) {
+        if (!success) {
             result.success = false;
             result.firstRule = rule;
-            // @deprecated
             result.message = rule.message;
 
             callback && callback(result);
         } else {
             restCount--;
-            if(restCount === 0)
+            if (restCount === 0)
                 callback && callback(result);
         }
-    }
+    };
 
-    for(var i = 0; i < rules.length; i++) {
-        if(!result.success)
+    for (let i = 0; i < rules.length; i++) {
+        if (!result.success)
             break;
 
-        var rule = rules[i];
-        if(rule.type === 'is')
+        const rule = rules[i];
+        if (rule.type === 'is')
             done.call(rule, rule.options.test(value));
-        else if(rule.type === 'isNot')
+        else if (rule.type === 'isNot')
             done.call(rule, !rule.options.test(value));
-        else if(rule.type === 'isRequired')
-            done.call(rule, !!validator.toString(value));
-        else if(rule.type === 'isFilled')
-            done.call(rule, !!validator.toString(value).trim());
-        else if(rule.type === 'async')
-            rule.options && rule.options(value, done.bind(rule));
-        else if(rule.type === 'method')
+        else if (rule.type === 'isRequired')
+            done.call(rule, !!value);
+        else if (rule.type === 'isFilled')
+            done.call(rule, !!value.trim());
+        else if (rule.type === 'method')
             done.call(rule, !!rule.options(value));
+        else if (rule.type === 'async')
+            rule.options && rule.options(value, done.bind(rule));
         else
-            done.call(rule, validator[rule.type](value + '', rule.options));
+            done.call(rule, validator[rule.type](value, rule.options));
     }
-}
+};
 
 Validation.validator = validator;
 
