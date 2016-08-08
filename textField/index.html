@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!-- 该文件由rgui-tools自动生成 -->
+<meta charset="utf-8">
+<title>Regular UI - TextField</title>
+<meta name="author" content="Rainfore">
+<meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
+<meta name="description" content="Regular UI">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="../css/index.css">
+<!--[if lt IE9]>
+<script>
+(function() {
+    if (!
+    /*@cc_on!@*/
+    0) return;
+    var e = 'abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video'.split(', ');
+    var i= e.length;
+    while (i--)
+        document.createElement(e[i]);
+})();
+</script>
+<![endif]-->
+</head>
+<body>
+<div class="g-top">
+    <div class="g-topc">
+        <a class="u-logo" href="./">Regular UI</a>
+    </div>
+</div>
+<div class="g-bd"><div class="g-bdc"><div class="g-mn g-mn-center">
+    <article class="m-article">
+        <h1>多行输入扩展<small> TextField</small></h1>
+        <h2 id="示例">示例</h2>
+<h3 id="基本形式">基本形式</h3>
+<p>大部分属性的用法与<code>&lt;textarea&gt;</code>一致。</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>备注：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">textField</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入备注&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<h3 id="验证">验证</h3>
+<p>关于表单验证，详细请参见<a href="https://regular-ui.github.io/ui-field/validation/index.html">表单验证</a>组件。</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>邮箱：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">textField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">rules</span>: [
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入正确的邮箱！&#39;</span> },
+        ],
+    },
+});
+</code></pre>
+
+        <h2 id="API">API</h2>
+
+<h3 id="Class">Class</h3>
+<h4>TextField</h4>
+<p>继承自<strong>Field</strong>。</p>
+<p></p>
+<div id="j-class"></div>
+
+<h3 id="Options">Options</h3>
+<h4>new TextField()</h4>
+<table>
+    <thead>
+        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
+    </thead>
+    <tbody>
+        
+            
+            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outside &lt;=&gt; inside</td><td>文本框的值</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.state</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outside &lt;=&gt; inside</td><td>文本框的状态</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.tip</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outside &lt;=&gt; inside</td><td>小贴示</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.rules</code></td><td class="f-wsn">object[]</td><td class="f-wsn"><code>[]</code></td><td class="f-tac">outside  =&gt; inside</td><td>验证规则集</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.placeholder</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>占位符</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.maxlength</code></td><td class="f-wsn">number</td><td class="f-wsn"></td><td class="f-tac">outside  =&gt; inside</td><td>文本框的最大长度</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.autofocus</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否自动获得焦点</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.readonly</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否只读</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.visible</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>true</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否显示</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.class</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outside  =&gt; inside</td><td>补充class</td></tr>
+            
+        
+    </tbody>
+</table>
+<div id="j-options"></div>
+
+
+<div id="j-methods"></div>
+
+
+<div id="j-staticMethods"></div>
+
+
+<div id="j-inheritedMethods"></div>
+
+
+<div id="j-events"></div>
+
+
+<div id="j-inheritedEvents"></div>
+
+    </article>
+</div>
+</div></div><div class="g-ft">
+    <footer class="m-footer">
+        <p><a href="https://regular-ui.github.io/v0.2/" class="footer_logo"><img src="https://regular-ui.github.io/v0.2/img/logo-v2.0-bg-48.png" /></p>
+        <p>
+            <a href="https://github.com/regular-ui/regular-ui" target="_blank">GitHub</a> |
+            <a href="https://github.com/regular-ui/regular-ui/issues" target="_blank">Issues</a> |
+            <a href="https://github.com/regular-ui/regular-ui/releases" target="_blank">ChangeLog</a> |
+            <a href="https://github.com/regular-ui/regular-ui/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a>
+        </p>
+        <p>Licensed under <a href="https://github.com/regular-ui/regular-ui/blob/master/LICENSE" target="_blank">MIT license</a>.</p>
+    </footer>
+</div>
+<script src="https://regular-ui.github.io/v0.2/vendor/polyfill.min.js"></script>
+<script src="https://regular-ui.github.io/v0.2/vendor/regular.min.js"></script>
+<script src="../js/index.js"></script>
+<script src="https://regular-ui.github.io/v0.2/js/helper.js"></script>
+<script>
+'use strict';
+
+var index = 0;
+(function (index) {
+    var template = '<label>备注：<textField placeholder="请输入备注" /></label>';
+    var component = new RGUI.Component({
+        template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = '<label>邮箱：<textField rules={rules} maxlength=20 /></label>';
+    var component = new RGUI.Component({
+        template: template,
+        data: {
+            rules: [{ type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input+blur', message: '请输入正确的邮箱！' }]
+        }
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+</script>
+</body>
+</html>
