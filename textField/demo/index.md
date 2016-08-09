@@ -11,7 +11,7 @@
 
 ### 验证
 
-关于表单验证，详细请参见[表单验证](https://regular-ui.github.io/ui-field/validation/index.html)组件。
+关于表单验证，详见[表单验证组件](https://regular-ui.github.io/ui-field/validation/index.html)。
 
 <div class="m-example"></div>
 

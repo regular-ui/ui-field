@@ -29,6 +29,7 @@ const TextField = Field.extend({
             // @inherited value: '',
             // @inherited state: '',
             // @inherited tip: '',
+            // @inherited _tip: '',
             // @inherited rules: [],
             placeholder: '',
             maxlength: undefined,
@@ -42,12 +43,14 @@ const TextField = Field.extend({
      */
     _onInput($event) {
         this.validate('input');
-        this.$emit('input', $event);
+        setTimeout(() => this.validate('input'), 0);
     },
     /**
      * @private
      */
     _onFocus($event) {
+        this.data.state = '';
+        this.data._tip = this.data.tip;
         this.$emit('focus', $event);
     },
     /**

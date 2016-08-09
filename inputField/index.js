@@ -32,6 +32,7 @@ const InputField = Field.extend({
             type: '',
             // @inherited state: '',
             // @inherited tip: '',
+            // @inherited _tip: '',
             // @inherited rules: [],
             placeholder: '',
             maxlength: undefined,
@@ -52,14 +53,16 @@ const InputField = Field.extend({
      * @private
      */
     _onFocus($event) {
+        this.data.state = '';
+        this.data._tip = this.data.tip;
         this.$emit('focus', $event);
     },
     /**
      * @private
      */
     _onBlur($event) {
-        this.$emit('blur', $event);
         this.validate('blur');
+        this.$emit('blur', $event);
     },
 });
 

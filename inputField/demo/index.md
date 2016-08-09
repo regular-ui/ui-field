@@ -19,12 +19,12 @@
 
 ### 验证
 
-关于表单验证，详细请参见[表单验证](https://regular-ui.github.io/ui-field/validation/index.html)组件。
+关于表单验证，详见[表单验证组件](https://regular-ui.github.io/ui-field/validation/index.html)。
 
 <div class="m-example"></div>
 
 ```xml
-<label>邮箱：<inputField rules={rules} maxlength=20 /></label>
+<label>邮箱：<inputField maxlength=20 tip="请输入注册时的邮箱" rules={rules} /></label>
 ```
 
 ```javascript
@@ -32,7 +32,7 @@ let component = new RGUI.Component({
     template,
     data: {
         rules: [
-            { type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' },
+            { type: 'isFilled', trigger: 'blur', message: '邮箱不能为空！' },
             { type: 'isEmail', trigger: 'input+blur', message: '请输入正确的邮箱！' },
         ],
     },

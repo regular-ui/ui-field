@@ -39,15 +39,8 @@ const Validation = Component.extend({
         };
 
         let restCount = this.fields.length;
-        const done = function (result) {
-            delete result.sender;
-            conclusion.results.push(result);
-            if (!result.success) {
-                conclusion.success = false;
-                conclusion.message = conclusion.message || result.message;
-            }
 
-            restCount--;
+        const final = () => {
             if (restCount === 0) {
                 /**
                  * @event validate 验证表单时触发
@@ -60,6 +53,19 @@ const Validation = Component.extend({
                     sender: this,
                 }, conclusion));
             }
+        }
+
+        final();
+        const done = function (result) {
+            delete result.sender;
+            conclusion.results.push(result);
+            if (!result.success) {
+                conclusion.success = false;
+                conclusion.message = conclusion.message || result.message;
+            }
+
+            restCount--;
+            final();
         };
 
         this.fields.forEach((field) =>
@@ -74,7 +80,7 @@ const Validation = Component.extend({
  * @static
  * @public
  * @param {var} value 待验证的值，会自动转为string类型
- * @param {var} value 验证规则集
+ * @param {object} rules 验证规则集
  * @callback {object} result 验证结果
  * @callback {boolean} result.success 验证是否正确
  * @callback {string} result.message 验证不通过时的消息
@@ -87,12 +93,14 @@ Validation.validate = function (value, rules, callback) {
     };
 
     value = validator.toString(value);
-    rules.forEach((rule) => rule.success = false);
 
     let restCount = rules.length;
+
+    const final = () => restCount === 0 && callback && callback(result);
+
+    final();
     const done = function (success) {
         const rule = this;
-        rule.success = success = !!success;
 
         if (!success) {
             result.success = false;
@@ -102,8 +110,7 @@ Validation.validate = function (value, rules, callback) {
             callback && callback(result);
         } else {
             restCount--;
-            if (restCount === 0)
-                callback && callback(result);
+            final();
         }
     };
 

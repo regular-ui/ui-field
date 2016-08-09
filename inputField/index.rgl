@@ -9,5 +9,5 @@
         on-change="change">
     {#if unit}<span class="inputField_unit">{unit}</span>{/if}
     {#if _eltIE9 && !value}<span class="inputField_placeholder">{placeholder}</span>{/if}
-    {#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+    {#if _tip}<span class="u-tip u-tip-{state}">{_tip}</span>{/if}
 </span>

@@ -24,12 +24,19 @@ const Field = Component.extend({
             value: '',
             state: '',
             tip: '',
+            _tip: '',
             rules: [],
         }, this.data);
         this.supr();
 
-        if (this.$outer && this.$outer instanceof Validation)
-            this.$outer.fields.push(this);
+        let $outer = this.$outer;
+        while ($outer) {
+            if ($outer instanceof Validation) {
+                $outer.fields.push(this);
+                break;
+            }
+            $outer = $outer.$outer;
+        }
     },
     /**
      * @protected
@@ -50,25 +57,31 @@ const Field = Component.extend({
      * @return {void}
      */
     validate(trigger = 'submit') {
-        const value = this.data.value;
-        let rules = this.data.rules;
-
         // const PRIORITY = {
-        //     'keyup': 2,
+        //     'input': 2,
         //     'blur': 1,
         //     'submit': 0,
         // };
 
-        rules = rules.filter((rule) => (rule.trigger || 'submit').includes(trigger));
+        const value = this.data.value;
+        const rules = this.data.rules.filter((rule) => (rule.trigger + '+submit').includes(trigger));
+        /* if (!rules.length) {
+            return this.$emit('validate', {
+                sender: this,
+                trigger,
+                success: true,
+            });
+        } */
 
+        this.data.state = 'validating';
         Validation.validate(value, rules, (result) => {
-            if (result.firstRule && !(result.firstRule.mute || '').includes(trigger))
-                this.data.tip = result.message;
-            else
-                this.data.tip = '';
-
             // @TODO
-            this.data.state = result.success ? '' : 'error';
+            if (result.firstRule && !(result.firstRule.mute || '').includes(trigger))
+                this.data._tip = result.message;
+            else
+                this.data._tip = '';
+
+            this.data.state = result.success ? 'success' : 'error';
             this.$update();
 
             /**
