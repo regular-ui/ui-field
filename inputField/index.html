@@ -48,16 +48,16 @@
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>速度：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">width</span>=<span class="cm-string">&quot;smw&quot;</span> <span class="cm-attribute">value</span>=<span class="cm-string">&quot;340&quot;</span> <span class="cm-attribute">unit</span>=<span class="cm-string">&quot;m/s&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <h3 id="验证">验证</h3>
-<p>关于表单验证，详细请参见<a href="https://regular-ui.github.io/ui-field/validation/index.html">表单验证</a>组件。</p>
+<p>关于表单验证，详见<a href="https://regular-ui.github.io/ui-field/validation/index.html">表单验证组件</a>。</p>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>邮箱：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>邮箱：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">tip</span>=<span class="cm-string">&quot;请输入注册时的邮箱&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>,
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: [
-            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;邮箱不能为空！&#39;</span> },
             { <span class="cm-property">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入正确的邮箱！&#39;</span> },
         ],
     },
@@ -166,11 +166,11 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = "<label>邮箱：<inputField rules={rules} maxlength=20 /></label>";
+    var template = "<label>邮箱：<inputField maxlength=20 tip=\"请输入注册时的邮箱\" rules={rules} /></label>";
     var component = new RGUI.Component({
         template: template,
         data: {
-            rules: [{ type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input+blur', message: '请输入正确的邮箱！' }]
+            rules: [{ type: 'isFilled', trigger: 'blur', message: '邮箱不能为空！' }, { type: 'isEmail', trigger: 'input+blur', message: '请输入正确的邮箱！' }]
         }
     });
     component && component.$inject($$(".m-example")[index]);
