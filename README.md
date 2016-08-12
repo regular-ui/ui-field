@@ -21,20 +21,17 @@ Regular UI - InputField, TextField
 
 ## InputField（输入扩展）
 
-- 基础示例+API: https://regular-ui.github.io/ui-field/inputField/index.html
-- 进阶案例: https://regular-ui.github.io/ui-field/inputField/case.html
+- 基础示例+进阶案例+API: https://regular-ui.github.io/ui-field/inputField/index.html
 
 ## TextField（多行输入扩展）
 
-- 基础示例+API: https://regular-ui.github.io/ui-field/textField/index.html
-- 进阶案例: https://regular-ui.github.io/ui-field/textField/case.html
+- 基础示例+进阶案例+API: https://regular-ui.github.io/ui-field/textField/index.html
 
 ## Validation
 
 > 因为联系比较紧密，暂时先放在这个库中，等开发稳定了再提出来。
 
-- 基础示例+API: https://regular-ui.github.io/ui-field/validation/index.html
-- 进阶案例: https://regular-ui.github.io/ui-field/validation/case.html
+- 基础示例+进阶案例+API: https://regular-ui.github.io/ui-field/validation/index.html
 
 ## Copyright and License
 
