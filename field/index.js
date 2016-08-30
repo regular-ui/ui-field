@@ -20,13 +20,13 @@ const Field = Component.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             value: '',
             state: '',
             tip: '',
             _tip: '',
             rules: [],
-        }, this.data);
+        });
         this.supr();
 
         let $outer = this.$outer;

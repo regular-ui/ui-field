@@ -25,7 +25,7 @@ const TextField = Field.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             // @inherited value: '',
             // @inherited state: '',
             // @inherited tip: '',
@@ -35,7 +35,7 @@ const TextField = Field.extend({
             maxlength: undefined,
             autofocus: false,
             // _eltIE9: bowser.msie && bowser.version <= 9,
-        }, this.data);
+        });
         this.supr();
     },
     /**

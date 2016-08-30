@@ -53,7 +53,7 @@ const Validation = Component.extend({
                     sender: this,
                 }, conclusion));
             }
-        }
+        };
 
         final();
         const done = function (result) {
@@ -69,7 +69,7 @@ const Validation = Component.extend({
         };
 
         this.fields.forEach((field) =>
-            field.$one('validate', done.bind(this)).validate());
+            field.$once('validate', done.bind(this)).validate());
 
         return conclusion;
     },

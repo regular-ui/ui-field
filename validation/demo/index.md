@@ -199,7 +199,7 @@ let component = new RGUI.Component({
         },
     },
     submit() {
-        this.$refs.validation.$one('validate', (conclusion) => {
+        this.$refs.validation.$once('validate', (conclusion) => {
             if(conclusion.success)
                 alert('提交成功！');
         }).validate();
@@ -369,7 +369,7 @@ let component = new RGUI.Component({
         },
     },
     submit() {
-        this.$refs.validation.$one('validate', (conclusion) => {
+        this.$refs.validation.$once('validate', (conclusion) => {
             if(conclusion.success)
                 alert('提交成功！');
         }).validate();
@@ -441,7 +441,7 @@ let component = new RGUI.Component({
         if(!this.$get('canSubmit'))
             return;
 
-        this.$refs.validation.$one('validate', (conclusion) => {
+        this.$refs.validation.$once('validate', (conclusion) => {
             if(conclusion.success)
                 alert('提交成功！');
         }).validate();

@@ -27,7 +27,7 @@ const InputField = Field.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             // @inherited value: '',
             type: '',
             // @inherited state: '',
@@ -39,7 +39,7 @@ const InputField = Field.extend({
             unit: '',
             autofocus: false,
             // _eltIE9: bowser.msie && bowser.version <= 9,
-        }, this.data);
+        });
         this.supr();
     },
     /**
