@@ -208,7 +208,7 @@
         },
     },
     <span class="cm-property">submit</span>() {
-        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$one</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$once</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
             <span class="cm-keyword">if</span>(<span class="cm-variable-2">conclusion</span>.<span class="cm-property">success</span>)
                 <span class="cm-variable">alert</span>(<span class="cm-string">&#39;提交成功！&#39;</span>);
         }).<span class="cm-property">validate</span>();
@@ -351,7 +351,7 @@
         },
     },
     <span class="cm-property">submit</span>() {
-        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$one</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$once</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
             <span class="cm-keyword">if</span>(<span class="cm-variable-2">conclusion</span>.<span class="cm-property">success</span>)
                 <span class="cm-variable">alert</span>(<span class="cm-string">&#39;提交成功！&#39;</span>);
         }).<span class="cm-property">validate</span>();
@@ -416,7 +416,7 @@
         <span class="cm-keyword">if</span>(<span class="cm-operator">!</span><span class="cm-keyword">this</span>.<span class="cm-property">$get</span>(<span class="cm-string">&#39;canSubmit&#39;</span>))
             <span class="cm-keyword">return</span>;
 
-        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$one</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
+        <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$once</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
             <span class="cm-keyword">if</span>(<span class="cm-variable-2">conclusion</span>.<span class="cm-property">success</span>)
                 <span class="cm-variable">alert</span>(<span class="cm-string">&#39;提交成功！&#39;</span>);
         }).<span class="cm-property">validate</span>();
@@ -667,7 +667,7 @@ var index = 0;
             }
         },
         submit: function submit() {
-            this.$refs.validation.$one('validate', function (conclusion) {
+            this.$refs.validation.$once('validate', function (conclusion) {
                 if (conclusion.success) alert('提交成功！');
             }).validate();
         }
@@ -719,7 +719,7 @@ var index = 0;
             }
         },
         submit: function submit() {
-            this.$refs.validation.$one('validate', function (conclusion) {
+            this.$refs.validation.$once('validate', function (conclusion) {
                 if (conclusion.success) alert('提交成功！');
             }).validate();
         }
@@ -746,7 +746,7 @@ var index = 0;
         submit: function submit() {
             if (!this.$get('canSubmit')) return;
 
-            this.$refs.validation.$one('validate', function (conclusion) {
+            this.$refs.validation.$once('validate', function (conclusion) {
                 if (conclusion.success) alert('提交成功！');
             }).validate();
         }
