@@ -22,7 +22,7 @@ const Validation = Component.extend({
     /**
      * @method validate() 验证所有内部的表单域
      * @public
-     * @return {object} conclusion 结论
+     * @return {void}
      */
     validate() {
         if (this.data.disabled) {
@@ -70,8 +70,6 @@ const Validation = Component.extend({
 
         this.fields.forEach((field) =>
             field.$once('validate', done.bind(this)).validate());
-
-        return conclusion;
     },
 });
 
