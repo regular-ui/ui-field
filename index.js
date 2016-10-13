@@ -1,5 +1,6 @@
+import Field from './field';
 import InputField from './inputField';
 import TextField from './textField';
 import Validation from './validation';
 
-export { InputField, TextField, Validation };
+export { Field, InputField, TextField, Validation };

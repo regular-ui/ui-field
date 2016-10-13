@@ -44,11 +44,17 @@ const InputField = Field.extend({
         this.supr();
     },
     /**
+     * @method focus() 使组件获得焦点
      * @public
+     * @return {void}
      */
-    focus() {
-        this.$refs.input.focus();
-    },
+    focus() {this.$refs.input.focus();},
+    /**
+     * @method blur() 使组件失去焦点
+     * @public
+     * @return {void}
+     */
+    blur() {this.$refs.input.blur();},
     /**
      * @private
      */

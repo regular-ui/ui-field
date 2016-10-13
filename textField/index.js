@@ -40,11 +40,17 @@ const TextField = Field.extend({
         this.supr();
     },
     /**
+     * @method focus() 使组件获得焦点
      * @public
+     * @return {void}
      */
-    focus() {
-        this.$refs.textarea.focus();
-    },
+    focus() {this.$refs.textarea.focus();},
+    /**
+     * @method blur() 使组件失去焦点
+     * @public
+     * @return {void}
+     */
+    blur() {this.$refs.textarea.blur();},
     /**
      * @private
      */
