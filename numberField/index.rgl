@@ -1,0 +1,19 @@
+<div class="ui-field u-numberfield" z-dis={disabled}>
+    <div class="field">
+        <input type="text" class="u-input u-input-{state} u-input-{size} u-input-{width}" 
+            autofocus={autofocus} 
+            readonly={readonly} 
+            disabled={disabled} 
+            r-model={value} 
+            on-input={this._onInput($event)}
+            on-keydown={this._onKeyDown($event)}
+            on-focus={this._onFocus($event)} 
+            on-blur={this._onBlur($event)}>
+        <div class="actions">
+            <div class="action plus" on-click={this.plus()} z-dis={value >= max}></div>
+            <div class="action minus" on-click={this.minus()} z-dis={value <= min}></div>
+        </div>
+        <div class="hint">{hint}</div>
+    </div>
+    <span class="tip" r-hide={!tip}><i class="u-icon u-icon-list_warn"></i> {tip}</span>
+</div>

@@ -1,0 +1,76 @@
+
+$u-numberfield_actions-width = 30px;
+.u-numberfield {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    .field {
+        position: relative;
+        display: block;
+        height: 100%;
+    }
+    .u-input {
+        padding-right: $u-numberfield_actions-width*2;
+        width: 180px;
+    }
+    .actions {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        bottom: 1px;
+        width: $u-numberfield_actions-width;
+        .action {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 50%;
+            box-sizing: border-box;
+            text-align: center;
+            &::after {
+                display: inline-block;
+                content: '\20';
+                border: 5px solid transparent;
+                vertical-align: top;
+                margin-top: 4px;
+            }
+            &.plus {
+                top: 0;
+                &::after {
+                    border-top-width: 3px;
+                    border-bottom-color: #acb3b9;
+                }
+            }
+            &.minus {
+                bottom: 0;
+                &::after {
+                    border-bottom-width: 3px;
+                    border-top-color: #acb3b9;
+                }
+            }
+            &:hover {
+                &.plus::after {
+                    border-bottom-color: #868c92;
+                }
+                &.minus::after {
+                    border-top-color: #868c92;
+                }
+            }
+            &.z-dis {
+                cursor: not-allowed;
+                &.plus::after {
+                    border-bottom-color: #d9d9d9;
+                }
+                &.minus::after {
+                    border-top-color: #d9d9d9;
+                }
+            }
+        }
+    }
+    .hint {
+        position: absolute;
+        right: $u-numberfield_actions-width;
+        top: 1px;
+        bottom: 1px;
+        color: #999;
+    }
+}

@@ -1,2 +1,3 @@
 @import './inputField/index.mcss';
 @import './textField/index.mcss';
+@import './numberField/index.mcss';
