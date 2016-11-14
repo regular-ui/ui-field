@@ -39,6 +39,7 @@ const InputField = Field.extend({
             maxlength: undefined,
             unit: '',
             autofocus: false,
+            _compositionInputing: false,
             // _eltIE9: bowser.msie && bowser.version <= 9,
         });
         this.supr();
@@ -48,19 +49,19 @@ const InputField = Field.extend({
      * @public
      * @return {void}
      */
-    focus() {this.$refs.input.focus();},
+    focus() { this.$refs.input.focus(); },
     /**
      * @method blur() 使组件失去焦点
      * @public
      * @return {void}
      */
-    blur() {this.$refs.input.blur();},
+    blur() { this.$refs.input.blur(); },
     /**
      * @private
      */
     _onInput($event) {
         this.$emit('input', $event);
-        setTimeout(() => this.validate('input'), 0);
+        setTimeout(() => !this.data._compositionInputing && this.validate('input'));
     },
     /**
      * @private

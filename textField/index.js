@@ -35,6 +35,7 @@ const TextField = Field.extend({
             placeholder: '',
             maxlength: undefined,
             autofocus: false,
+            _compositionInputing: false,
             // _eltIE9: bowser.msie && bowser.version <= 9,
         });
         this.supr();
@@ -44,19 +45,19 @@ const TextField = Field.extend({
      * @public
      * @return {void}
      */
-    focus() {this.$refs.textarea.focus();},
+    focus() { this.$refs.textarea.focus(); },
     /**
      * @method blur() 使组件失去焦点
      * @public
      * @return {void}
      */
-    blur() {this.$refs.textarea.blur();},
+    blur() { this.$refs.textarea.blur(); },
     /**
      * @private
      */
     _onInput($event) {
         this.validate('input');
-        setTimeout(() => this.validate('input'), 0);
+        setTimeout(() => !this.data._compositionInputing && this.validate('input'));
     },
     /**
      * @private
