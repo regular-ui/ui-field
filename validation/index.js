@@ -116,14 +116,17 @@ Validation.validate = function (value, rules, callback) {
             break;
 
         const rule = rules[i];
-        if (rule.type === 'is')
+        // 在value为空情况下，只有`isRequired`会阻止，其他类型都通过。
+        if (rule.type === 'isRequired')
+            done.call(rule, !!value);
+        else if (!value)
+            done.call(rule, true);
+        else if (rule.type === 'isFilled')
+            done.call(rule, !!value.trim());
+        else if (rule.type === 'is')
             done.call(rule, rule.options.test(value));
         else if (rule.type === 'isNot')
             done.call(rule, !rule.options.test(value));
-        else if (rule.type === 'isRequired')
-            done.call(rule, !!value);
-        else if (rule.type === 'isFilled')
-            done.call(rule, !!value.trim());
         else if (rule.type === 'method')
             done.call(rule, !!rule.options(value));
         else if (rule.type === 'async')

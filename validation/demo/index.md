@@ -5,7 +5,7 @@
 许多经典的框架或类库会把某个表单控件的验证行为抽象成类似这样的结构：
 
 ```javascript
-{required:  ..., type:  ..., min:  ..., max: ..., pattern: ..., extend: ...}
+{ required:  ..., type:  ..., min:  ..., max: ..., pattern: ..., extend: ... }
 ```
 
 这使得表单验证时按照固定的字段和顺序来处理，并且同一条规则不能重复使用，大大降低了验证逻辑的灵活性。
@@ -15,23 +15,23 @@
 在Regular UI中，每个表单域`field`组件的验证行为由一个有序列表——规则集`rules`来处理，每个规则集包含若干条验证规则`rule`，结构如下：
 
 ```javascript
-[{type: 'isRequired', ...}, {type: 'is', ...}, {type: 'isInt', ...}, ...]
+[{ type: 'isRequired', ... }, { type: 'is', ... }, { type: 'isInt', ... }, ...]
 ```
 
 每条规则仅包括4个参数：
 
-- `type`：验证类型
-- `trigger`：触发方式
-- `message`：验证不通过时的消息
-- `options`：关于验证类型的一些选项
+- `type`：验证类型；
+- `trigger`：触发方式；
+- `message`：验证不通过时的消息；
+- `options`：关于验证类型的一些选项。
 
 下面举个例子，一个用户名输入框的验证包含以下规则：
 
-1. 以字母开头，实时验证
-2. 字母、数字或中划线组成，实时验证
-3. 以字母或数字结尾，实时验证
-4. 必须输入用户名，失焦验证
-5. 4~12个字符，失焦验证
+1. 以字母开头，实时验证；
+2. 字母、数字或中划线组成，实时验证；
+3. 以字母或数字结尾，实时验证；
+4. 必须输入用户名，失焦验证；
+5. 4~12个字符，失焦验证。
 
 <div class="m-example"></div>
 
@@ -40,7 +40,7 @@
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules} maxlength=12 placeholder="4~12个字符" />
+            <inputField rules={rules} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
 </form>
@@ -51,9 +51,9 @@ let component = new RGUI.Component({
     template,
     data: {
         rules: [
-            { type: 'isNot', trigger: 'input+blur', message: '以字母开头', options: /^[^a-zA-Z]/ },
-            { type: 'isNot', trigger: 'input+blur', message: '字母、数字或中划线组成', options: /[^a-zA-Z0-9-]/ },
-            { type: 'isNot', trigger: 'blur', message: '以字母或数字结尾', options: /[^a-zA-Z0-9]$/ },
+            { type: 'is', trigger: 'input+blur', message: '以字母开头', options: /^[a-zA-Z]/ },
+            { type: 'is', trigger: 'input+blur', message: '字母、数字或中划线组成', options: /^[a-zA-Z0-9-]+$/ },
+            { type: 'is', trigger: 'blur', message: '以字母或数字结尾', options: /[a-zA-Z0-9]$/ },
             { type: 'isRequired', trigger: 'blur', message: '请输入用户名' },
             { type: 'isLength', trigger: 'blur', message: '不得少于4个字符', options: { min: 4 } },
         ],
@@ -63,12 +63,13 @@ let component = new RGUI.Component({
 
 ### 规则类型
 
-- 当类型为`isRequired`时，表示该值不能为空
-- 当类型为`isFilled`时，表示该值去除首尾空白字符，即`trim`之后也不能为空
-- 当类型为`is`时，需要给`options`传一个正则表达式，根据此正则表达式来验证该值
-- 当类型为`isNot`时，与`is`同理，只是验证结果为正则表达式的否定值
-- 当类型为`method`时，需要给`options`传一个同步方法，通过这个方法来验证该值
-- 当类型为`async`时，需要给`options`传一个异步方法，同时异步方法中需要调用`done`回调函数，通过这个过程来验证该值
+- 当值为空时，只有`isRequired`能够阻止，其他规则自动通过；
+- 当类型为`isRequired`时，表示该值不能为空；
+- 当类型为`isFilled`时，表示该值去除首尾空白字符，即`trim`之后不能为空；
+- 当类型为`is`时，需要给`options`传一个正则表达式，根据此正则表达式来验证该值；
+- 当类型为`isNot`时，与`is`同理，只是验证结果为正则表达式的否定值；
+- 当类型为`method`时，需要给`options`传一个同步方法，通过这个方法来验证该值；
+- 当类型为`async`时，需要给`options`传一个异步方法，同时异步方法中需要调用`done`回调函数，通过这个过程来验证该值。
 
 其它规则如`isLength`, `isInt`, `isURL`, ...，请参见[validator](https://www.npmjs.com/package/validator)。
 
@@ -81,49 +82,49 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">isRequired<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[0]} maxlength=12 placeholder="试一试什么都不要输入" />
+            <inputField size="lgw" rules={rules[0]} maxlength="12" placeholder="试一试什么都不要输入" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">isFilled<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[1]} maxlength=12 placeholder="试一试输入空格" />
+            <inputField size="lgw" rules={rules[1]} maxlength="12" placeholder="试一试输入空格" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">is：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[2]} maxlength=12 placeholder="以数字开头" />
+            <inputField size="lgw" rules={rules[2]} maxlength="12" placeholder="以数字开头" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">isNot：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[3]} maxlength=12 placeholder="不能以数字开头" />
+            <inputField size="lgw" rules={rules[3]} maxlength="12" placeholder="不能以数字开头" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">method：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[4]} maxlength=12 placeholder="验证码为6543" />
+            <inputField size="lgw" rules={rules[4]} maxlength="12" placeholder="验证码为6543" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">async：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[5]} maxlength=12 placeholder="用户名user已被使用" />
+            <inputField size="lgw" rules={rules[5]} maxlength="12" placeholder="用户名user已被使用" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">isLength：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[6]} maxlength=12 placeholder="4~8个字符" />
+            <inputField size="lgw" rules={rules[6]} maxlength="12" placeholder="4~8个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">isEmail：</label>
         <span class="form_field">
-            <inputField size="lgw" rules={rules[7]} maxlength=12 placeholder="输入一个电子邮箱" />
+            <inputField size="lgw" rules={rules[7]} maxlength="12" placeholder="输入一个电子邮箱" />
         </span>
     </div>
 </form>
@@ -135,7 +136,7 @@ let component = new RGUI.Component({
     data: {
         rules: [
             [{ type: 'isRequired', trigger: 'input+blur', message: '该值不能为空' }],
-            [{ type: 'isFilled', trigger: 'input+blur', message: '该值不能为空' }],
+            [{ type: 'isFilled', trigger: 'input+blur', message: '该值不能全是空格' }],
             [{ type: 'is', trigger: 'input+blur', message: '以数字开头', options: /^\d/ }],
             [{ type: 'isNot', trigger: 'input+blur', message: '不能以数字开头', options: /^\d/ }],
             [{ type: 'method', trigger: 'input+blur', message: '请输入正确的验证码', options: (value) => value === '6543' }],
@@ -167,13 +168,13 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
     <div class="form_item">
@@ -189,11 +190,12 @@ let component = new RGUI.Component({
     data: {
         rules: {
             name: [
-                { type: 'isFilled', message: '请输入用户名！' },
+                { type: 'isRequired', message: '请输入用户名！' },
+                { type: 'isFilled', message: '请输入合适的用户名！' },
                 { type: 'isLength', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', message: '请输入邮箱！' },
+                { type: 'isRequired', message: '请输入邮箱！' },
                 { type: 'isEmail', message: '邮箱格式不正确！' },
             ],
         },
@@ -218,13 +220,13 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
 </form>
@@ -236,11 +238,12 @@ let component = new RGUI.Component({
     data: {
         rules: {
             name: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' },
                 { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' },
                 { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' },
             ],
         },
@@ -261,13 +264,13 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
 </form>
@@ -279,11 +282,12 @@ let component = new RGUI.Component({
     data: {
         rules: {
             name: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' },
                 { type: 'isLength', trigger: 'input+blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' },
                 { type: 'isEmail', trigger: 'input', message: '邮箱格式不正确！' },
             ],
         },
@@ -302,7 +306,7 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">姓名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField maxlength=4 placeholder="不超过4个字符" />
+            <inputField maxlength="4" placeholder="不超过4个字符" />
         </span>
     </div>
 </form>
@@ -328,19 +332,19 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">手机号码：</label>
         <span class="form_field">
-            <inputField rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />
+            <inputField rules={rules.phone} maxlength="11" placeholder="请输入手机号码" />
         </span>
     </div>
     <div class="form_item">
@@ -356,15 +360,16 @@ let component = new RGUI.Component({
     data: {
         rules: {
             name: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入用户名！' },
+                { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' },
                 { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' },
+                { type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' },
                 { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' },
             ],
             phone: [
-                { type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ },
+                { type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^\d{11}$/ },
             ],
         },
     },
@@ -391,23 +396,23 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField value={user.name} rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField value={user.name} rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField value={user.email} rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField value={user.email} rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">手机号码：</label>
         <span class="form_field">
-            <inputField rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />
+            <inputField rules={rules.phone} maxlength="11" placeholder="请输入手机号码" />
         </span>
     </div>
     <div class="form_item">
-        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={this.submit()}>提交</a></span>
+        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={canSubmit && this.submit()}>提交</a></span>
     </div>
 </validation>
 </form>
@@ -420,27 +425,24 @@ let component = new RGUI.Component({
         user: {},
         rules: {
             name: [
-                { type: 'isFilled', trigger: 'blur', mute: 'blur', message: '请输入用户名！' },
+                { type: 'isRequired', trigger: 'blur', mute: 'blur', message: '请输入用户名！' },
+                { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' },
                 { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', trigger: 'blur', mute: 'blur', message: '请输入邮箱！' },
+                { type: 'isRequired', trigger: 'blur', mute: 'blur', message: '请输入邮箱！' },
                 { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' },
             ],
             phone: [
-                { type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ },
-            ]
-        }
-    },
-    computed: {
-        canSubmit() {
-            return this.data.user.name && this.data.user.email;
+                { type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^\d{11}$/ },
+            ],
         },
+        canSubmit: false,
+    },
+    config() {
+        this.$watch('user.name && user.email', (canSubmit) => this.data.canSubmit = canSubmit);
     },
     submit: function() {
-        if(!this.$get('canSubmit'))
-            return;
-
         this.$refs.validation.$once('validate', (conclusion) => {
             if(conclusion.success)
                 alert('提交成功！');
@@ -463,19 +465,19 @@ let component = new RGUI.Component({
     <div class="form_item">
         <label class="form_label">用户名<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField value={user.name} rules={rules.name} maxlength=12 placeholder="4~12个字符" />
+            <inputField value={user.name} rules={rules.name} maxlength="12" placeholder="4~12个字符" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">邮箱<span class="form_required">*</span>：</label>
         <span class="form_field">
-            <inputField value={user.email} rules={rules.email} maxlength=20 placeholder="请输入邮箱" />
+            <inputField value={user.email} rules={rules.email} maxlength="20" placeholder="请输入邮箱" />
         </span>
     </div>
     <div class="form_item">
         <label class="form_label">手机号码：</label>
         <span class="form_field">
-            <inputField state="success" rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />
+            <inputField state="success" rules={rules.phone} maxlength="11" placeholder="请输入手机号码" />
         </span>
     </div>
     <div class="form_item">
@@ -492,21 +494,23 @@ let component = new RGUI.Component({
         user: {},
         rules: {
             name: [
-                { type: 'isFilled', trigger: 'input+blur', mute: 'input+blur', message: '请输入用户名！' },
+                { type: 'isRequired', trigger: 'input+blur', mute: 'input+blur', message: '请输入用户名！' },
+                { type: 'isFilled', trigger: 'input+blur', mute: 'input', message: '请输入合适的用户名！' },
                 { type: 'isLength', trigger: 'input+blur', mute: 'input', message: '请输入4~12个字符！', options: { min: 4, max: 12 } },
             ],
             email: [
-                { type: 'isFilled', trigger: 'input+blur', mute: 'input+blur', message: '请输入邮箱！' },
+                { type: 'isRequired', trigger: 'input+blur', mute: 'input+blur', message: '请输入邮箱！' },
                 { type: 'isEmail', trigger: 'input+blur', mute: 'input', message: '邮箱格式不正确！' },
             ],
             phone: [
-                { type: 'is', trigger: 'input+blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ },
+                { type: 'is', trigger: 'input+blur', message: '手机号码格式不正确！', options: /^\d+$/ },
             ],
-        }
+        },
+        canSubmit: false,
     },
     computed: {
         canSubmit() {
-            return this.$refs.validation && this.$refs.validation.fields.every((field) => field.data.state === 'success');
+            return this.$refs.validation && this.$refs.validation.fields.every((field) => field.data._state === 'success');
         },
     },
     submit: function() {

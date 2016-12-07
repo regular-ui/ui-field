@@ -32,6 +32,7 @@ const InputField = Field.extend({
             // @inherited value: '',
             type: '',
             // @inherited state: '',
+            // @inherited _state: '',
             // @inherited tip: '',
             // @inherited _tip: '',
             // @inherited rules: [],

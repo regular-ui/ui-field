@@ -23,6 +23,7 @@ const Field = Component.extend({
         this.defaults({
             value: '',
             state: '',
+            _state: '',
             tip: '',
             _tip: '',
             rules: [],
@@ -73,7 +74,7 @@ const Field = Component.extend({
             });
         } */
 
-        this.data.state = 'validating';
+        this.data._state = this.data.state = 'validating';
         Validation.validate(value, rules, (result) => {
             // @TODO
             if (result.firstRule && !(result.firstRule.mute || '').includes(trigger))
@@ -81,7 +82,7 @@ const Field = Component.extend({
             else
                 this.data._tip = '';
 
-            this.data.state = result.success ? 'success' : 'error';
+            this.data._state = this.data.state = result.success ? 'success' : 'error';
             this.$update();
 
             /**
