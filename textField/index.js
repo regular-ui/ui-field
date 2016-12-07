@@ -56,7 +56,7 @@ const TextField = Field.extend({
      * @private
      */
     _onInput($event) {
-        this.validate('input');
+        this.$emit('input', $event);
         setTimeout(() => !this.data._compositionInputing && this.validate('input'));
     },
     /**

@@ -1,6 +1,5 @@
 import { Component } from 'rgui-ui-base';
 import validator from 'validator';
-import '../util';
 
 /**
  * @class Validation
