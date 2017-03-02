@@ -3,8 +3,8 @@ import validator from 'validator';
 
 /**
  * @class Validation
- * @extend Component
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Component
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {boolean=false}           options.data.disabled            => 是否禁用。当禁用时，验证始终通过。
  */
 const Validation = Component.extend({
@@ -77,7 +77,7 @@ const Validation = Component.extend({
  * @static
  * @public
  * @param {var} value 待验证的值，会自动转为string类型
- * @param {object} rules 验证规则集
+ * @param {Object} rules 验证规则集
  * @callback {object} result 验证结果
  * @callback {boolean} result.success 验证是否正确
  * @callback {string} result.message 验证不通过时的消息

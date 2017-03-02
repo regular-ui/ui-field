@@ -3,12 +3,12 @@ import Validation from '../validation';
 
 /**
  * @class Field
- * @extend Component
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Component
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 表单域的值
  * @param {string=''}               options.data.state              <=> 表单域的状态
  * @param {string=''}               options.data.tip                <=> 小贴示
- * @param {object[]=[]}             options.data.rules               => 验证规则集
+ * @param {Object[]=[]}             options.data.rules               => 验证规则集
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示

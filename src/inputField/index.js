@@ -3,14 +3,14 @@ import template from './index.rgl';
 
 /**
  * @class InputField
- * @extend Field
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Field
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
  * @param {string=''}               options.data.type                => 文本框的类型
  * @param {string=''}               options.data.size               <=> 文本框的尺寸
  * @param {string=''}               options.data.state              <=> 文本框的状态
  * @param {string=''}               options.data.tip                <=> 小贴示
- * @param {object[]=[]}             options.data.rules               => 验证规则集
+ * @param {Object[]=[]}             options.data.rules               => 验证规则集
  * @param {string=''}               options.data.placeholder         => 文本框的占位文字
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点

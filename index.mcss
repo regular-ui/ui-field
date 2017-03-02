@@ -1,2 +1,2 @@
-@import './inputField/index.mcss';
-@import './textField/index.mcss';
+@import './src/inputField/index.mcss';
+@import './src/textField/index.mcss';
