@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="https://regular-ui.github.io/v0.2/img/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/doc.default.min.css">
+<link rel="stylesheet" href="https://regular-ui.github.io/v0.2/css/docs.default.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <!--[if lt IE9]>
 <script>
@@ -38,27 +38,27 @@
         <p>表单验证在网页中是一种很常见却不简单的交互流程。随着前端的发展，这种流程变得越来越复杂多样，传统的表单处理逻辑已经无法很好的满足交互需求。Regular UI为了解决这种问题，实现了一套创新性的表单验证体系。</p>
 <h2 id="验证规则">验证规则</h2>
 <p>许多经典的框架或类库会把某个表单控件的验证行为抽象成类似这样的结构：</p>
-<pre class="lang-javascript"><code>{<span class="cm-variable">required</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">type</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">min</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">max</span>: <span class="cm-meta">...</span>, <span class="cm-variable">pattern</span>: <span class="cm-meta">...</span>, <span class="cm-variable">extend</span>: <span class="cm-meta">...</span>}
+<pre class="lang-javascript"><code>{ <span class="cm-variable">required</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">type</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">min</span>:  <span class="cm-meta">...</span>, <span class="cm-variable">max</span>: <span class="cm-meta">...</span>, <span class="cm-variable">pattern</span>: <span class="cm-meta">...</span>, <span class="cm-variable">extend</span>: <span class="cm-meta">...</span> }
 </code></pre>
 <p>这使得表单验证时按照固定的字段和顺序来处理，并且同一条规则不能重复使用，大大降低了验证逻辑的灵活性。</p>
 <h3 id="有序规则集">有序规则集</h3>
 <p>在Regular UI中，每个表单域<code>field</code>组件的验证行为由一个有序列表——规则集<code>rules</code>来处理，每个规则集包含若干条验证规则<code>rule</code>，结构如下：</p>
-<pre class="lang-javascript"><code>[{<span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-meta">...</span>}, {<span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-meta">...</span>}, {<span class="cm-property">type</span>: <span class="cm-string">&#39;isInt&#39;</span>, <span class="cm-meta">...</span>}, <span class="cm-meta">...</span>]
+<pre class="lang-javascript"><code>[{ <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-meta">...</span> }, { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-meta">...</span> }, { <span class="cm-property">type</span>: <span class="cm-string">&#39;isInt&#39;</span>, <span class="cm-meta">...</span> }, <span class="cm-meta">...</span>]
 </code></pre>
 <p>每条规则仅包括4个参数：</p>
 <ul>
-<li><code>type</code>：验证类型</li>
-<li><code>trigger</code>：触发方式</li>
-<li><code>message</code>：验证不通过时的消息</li>
-<li><code>options</code>：关于验证类型的一些选项</li>
+<li><code>type</code>：验证类型；</li>
+<li><code>trigger</code>：触发方式；</li>
+<li><code>message</code>：验证不通过时的消息；</li>
+<li><code>options</code>：关于验证类型的一些选项。</li>
 </ul>
 <p>下面举个例子，一个用户名输入框的验证包含以下规则：</p>
 <ol>
-<li>以字母开头，实时验证</li>
-<li>字母、数字或中划线组成，实时验证</li>
-<li>以字母或数字结尾，实时验证</li>
-<li>必须输入用户名，失焦验证</li>
-<li>4~12个字符，失焦验证</li>
+<li>以字母开头，实时验证；</li>
+<li>字母、数字或中划线组成，实时验证；</li>
+<li>以字母或数字结尾，实时验证；</li>
+<li>必须输入用户名，失焦验证；</li>
+<li>4~12个字符，失焦验证。</li>
 </ol>
 <div class="m-example"></div>
 
@@ -66,7 +66,7 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -75,9 +75,9 @@
     <span class="cm-property">template</span>,
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: [
-            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isNot&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;以字母开头&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^[^a-zA-Z]/</span> },
-            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isNot&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;字母、数字或中划线组成&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/[^a-zA-Z0-9-]/</span> },
-            { <span class="cm-property">type</span>: <span class="cm-string">&#39;isNot&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;以字母或数字结尾&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/[^a-zA-Z0-9]$/</span> },
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;以字母开头&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^[a-zA-Z]/</span> },
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;字母、数字或中划线组成&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^[a-zA-Z0-9-]+$/</span> },
+            { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;以字母或数字结尾&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/[a-zA-Z0-9]$/</span> },
             { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名&#39;</span> },
             { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;不得少于4个字符&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span> } },
         ],
@@ -86,12 +86,13 @@
 </code></pre>
 <h3 id="规则类型">规则类型</h3>
 <ul>
-<li>当类型为<code>isRequired</code>时，表示该值不能为空</li>
-<li>当类型为<code>isFilled</code>时，表示该值去除首尾空白字符，即<code>trim</code>之后也不能为空</li>
-<li>当类型为<code>is</code>时，需要给<code>options</code>传一个正则表达式，根据此正则表达式来验证该值</li>
-<li>当类型为<code>isNot</code>时，与<code>is</code>同理，只是验证结果为正则表达式的否定值</li>
-<li>当类型为<code>method</code>时，需要给<code>options</code>传一个同步方法，通过这个方法来验证该值</li>
-<li>当类型为<code>async</code>时，需要给<code>options</code>传一个异步方法，同时异步方法中需要调用<code>done</code>回调函数，通过这个过程来验证该值</li>
+<li>当值为空时，只有<code>isRequired</code>能够阻止，其他规则自动通过；</li>
+<li>当类型为<code>isRequired</code>时，表示该值不能为空；</li>
+<li>当类型为<code>isFilled</code>时，表示该值去除首尾空白字符，即<code>trim</code>之后不能为空；</li>
+<li>当类型为<code>is</code>时，需要给<code>options</code>传一个正则表达式，根据此正则表达式来验证该值；</li>
+<li>当类型为<code>isNot</code>时，与<code>is</code>同理，只是验证结果为正则表达式的否定值；</li>
+<li>当类型为<code>method</code>时，需要给<code>options</code>传一个同步方法，通过这个方法来验证该值；</li>
+<li>当类型为<code>async</code>时，需要给<code>options</code>传一个异步方法，同时异步方法中需要调用<code>done</code>回调函数，通过这个过程来验证该值。</li>
 </ul>
 <p>其它规则如<code>isLength</code>, <code>isInt</code>, <code>isURL</code>, ...，请参见<a href="https://www.npmjs.com/package/validator">validator</a>。</p>
 <p>示例如下：</p>
@@ -101,49 +102,49 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>isRequired<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[0]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;试一试什么都不要输入&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[0]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;试一试什么都不要输入&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>isFilled<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[1]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;试一试输入空格&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[1]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;试一试输入空格&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>is：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[2]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;以数字开头&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[2]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;以数字开头&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>isNot：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[3]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;不能以数字开头&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[3]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;不能以数字开头&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>method：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[4]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;验证码为6543&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[4]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;验证码为6543&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>async：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[5]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;用户名user已被使用&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[5]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;用户名user已被使用&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>isLength：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[6]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~8个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[6]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~8个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>isEmail：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[7]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;输入一个电子邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lgw&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules[7]}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;输入一个电子邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -153,7 +154,7 @@
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: [
             [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;该值不能为空&#39;</span> }],
-            [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;该值不能为空&#39;</span> }],
+            [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;该值不能全是空格&#39;</span> }],
             [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;以数字开头&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^\d/</span> }],
             [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;isNot&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;不能以数字开头&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^\d/</span> }],
             [{ <span class="cm-property">type</span>: <span class="cm-string">&#39;method&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入正确的验证码&#39;</span>, <span class="cm-property">options</span>: (<span class="cm-def">value</span>) <span class="cm-operator">=&gt;</span> <span class="cm-variable-2">value</span> <span class="cm-operator">===</span> <span class="cm-string">&#39;6543&#39;</span> }],
@@ -178,13 +179,13 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -198,11 +199,12 @@
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
         },
@@ -223,13 +225,13 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -239,11 +241,12 @@
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
         },
@@ -259,13 +262,13 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -275,11 +278,12 @@
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;input&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
         },
@@ -294,7 +298,7 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>姓名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">4</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;不超过4个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;4&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;不超过4个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -312,19 +316,19 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>手机号码：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;11&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -338,15 +342,16 @@
     <span class="cm-property">data</span>: {
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
             <span class="cm-property">phone</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^$|^\d{11}$/</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^\d{11}$/</span> },
             ],
         },
     },
@@ -368,23 +373,23 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.name}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.name}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.email}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.email}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>手机号码：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;11&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span> <span class="cm-attribute">z-dis</span>=<span class="cm-attribute">{!canSubmit}</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.submit()}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>提交<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span> <span class="cm-attribute">z-dis</span>=<span class="cm-attribute">{!canSubmit}</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{canSubmit</span> <span class="cm-attribute">&amp;&amp;</span> <span class="cm-attribute">this.submit()}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>提交<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">validation</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -395,27 +400,24 @@
         <span class="cm-property">user</span>: {},
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">mute</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">mute</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
             <span class="cm-property">phone</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^$|^\d{11}$/</span> },
-            ]
-        }
-    },
-    <span class="cm-property">computed</span>: {
-        <span class="cm-property">canSubmit</span>() {
-            <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">user</span>.<span class="cm-property">name</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">user</span>.<span class="cm-property">email</span>;
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^\d{11}$/</span> },
+            ],
         },
+        <span class="cm-property">canSubmit</span>: <span class="cm-atom">false</span>,
+    },
+    <span class="cm-property">config</span>() {
+        <span class="cm-keyword">this</span>.<span class="cm-property">$watch</span>(<span class="cm-string">&#39;user.name &amp;&amp; user.email&#39;</span>, (<span class="cm-def">canSubmit</span>) <span class="cm-operator">=&gt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">canSubmit</span> <span class="cm-operator">=</span> <span class="cm-variable-2">canSubmit</span>);
     },
     <span class="cm-property">submit</span>: <span class="cm-keyword">function</span>() {
-        <span class="cm-keyword">if</span>(<span class="cm-operator">!</span><span class="cm-keyword">this</span>.<span class="cm-property">$get</span>(<span class="cm-string">&#39;canSubmit&#39;</span>))
-            <span class="cm-keyword">return</span>;
-
         <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">$once</span>(<span class="cm-string">&#39;validate&#39;</span>, (<span class="cm-def">conclusion</span>) <span class="cm-operator">=&gt;</span> {
             <span class="cm-keyword">if</span>(<span class="cm-variable-2">conclusion</span>.<span class="cm-property">success</span>)
                 <span class="cm-variable">alert</span>(<span class="cm-string">&#39;提交成功！&#39;</span>);
@@ -433,19 +435,19 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>用户名<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.name}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">12</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.name}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.name}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;4~12个字符&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_required&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.email}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">20</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{user.email}</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.email}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;20&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入邮箱&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_label&quot;</span><span class="cm-tagcm-bracket">&gt;</span>手机号码：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_field&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">state</span>=<span class="cm-string">&quot;success&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">inputField</span> <span class="cm-attribute">state</span>=<span class="cm-string">&quot;success&quot;</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{rules.phone}</span> <span class="cm-attribute">maxlength</span>=<span class="cm-string">&quot;11&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入手机号码&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;form_item&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -460,21 +462,23 @@
         <span class="cm-property">user</span>: {},
         <span class="cm-property">rules</span>: {
             <span class="cm-property">name</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入用户名！&#39;</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;input&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入合适的用户名！&#39;</span> },
                 { <span class="cm-property">type</span>: <span class="cm-string">&#39;isLength&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">mute</span>: <span class="cm-string">&#39;input&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;请输入4~12个字符！&#39;</span>, <span class="cm-property">options</span>: { <span class="cm-property">min</span>: <span class="cm-number">4</span>, <span class="cm-property">max</span>: <span class="cm-number">12</span> } },
             ],
             <span class="cm-variable">email</span>: [
-                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isFilled&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-variable">mute</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
+                { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isRequired&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-variable">mute</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;请输入邮箱！&#39;</span> },
                 { <span class="cm-variable">type</span>: <span class="cm-string">&#39;isEmail&#39;</span>, <span class="cm-variable">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-variable">mute</span>: <span class="cm-string">&#39;input&#39;</span>, <span class="cm-variable">message</span>: <span class="cm-string">&#39;邮箱格式不正确！&#39;</span> },
             ],
             <span class="cm-property">phone</span>: [
-                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^$|^\d{11}$/</span> },
+                { <span class="cm-property">type</span>: <span class="cm-string">&#39;is&#39;</span>, <span class="cm-property">trigger</span>: <span class="cm-string">&#39;input+blur&#39;</span>, <span class="cm-property">message</span>: <span class="cm-string">&#39;手机号码格式不正确！&#39;</span>, <span class="cm-property">options</span>: <span class="cm-string-2">/^\d+$/</span> },
             ],
-        }
+        },
+        <span class="cm-property">canSubmit</span>: <span class="cm-atom">false</span>,
     },
     <span class="cm-property">computed</span>: {
         <span class="cm-property">canSubmit</span>() {
-            <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">fields</span>.<span class="cm-property">every</span>((<span class="cm-def">field</span>) <span class="cm-operator">=&gt;</span> <span class="cm-variable-2">field</span>.<span class="cm-property">data</span>.<span class="cm-property">state</span> <span class="cm-operator">===</span> <span class="cm-string">&#39;success&#39;</span>);
+            <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-keyword">this</span>.<span class="cm-property">$refs</span>.<span class="cm-property">validation</span>.<span class="cm-property">fields</span>.<span class="cm-property">every</span>((<span class="cm-def">field</span>) <span class="cm-operator">=&gt;</span> <span class="cm-variable-2">field</span>.<span class="cm-property">data</span>.<span class="cm-property">_state</span> <span class="cm-operator">===</span> <span class="cm-string">&#39;success&#39;</span>);
         },
     },
     <span class="cm-property">submit</span>: <span class="cm-keyword">function</span>() {
@@ -490,28 +494,30 @@
 
         <h2 id="API">API</h2>
 
-<h3 id="Class">Class</h3>
-<h4>Validation</h4>
-<p>继承自<strong>Component</strong>。</p>
-<p></p>
-<div id="j-class"></div>
 
-<h3 id="Options">Options</h3>
-<h4>new Validation()</h4>
-<table>
-    <thead>
-        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
-    </thead>
-    <tbody>
-        
+    <h3 id="Class">Class</h3>
+    <h4>Validation</h4>
+    <p>继承自<strong></strong>。</p>
+    <p></p>
+    <div id="j-class"></div>
+
+    <h3 id="Options">Options</h3>
+    <h4>new Validation()</h4>
+    <table>
+        <thead>
+            <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
+        </thead>
+        <tbody>
             
-            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">Object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
+                
+                <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用。当禁用时，验证始终通过。</td></tr>
+                
             
-            <tr><td class="f-wsn"><code>data.disabled</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>false</code></td><td class="f-tac">outside  =&gt; inside</td><td>是否禁用。当禁用时，验证始终通过。</td></tr>
-            
-        
-    </tbody>
-</table>
+        </tbody>
+    </table>
+
 <div id="j-options"></div>
 
 
@@ -557,7 +563,7 @@
                 
                 <tr><td class="f-wsn"><code>value</code></td><td class="f-wsn">var</td><td class="f-wsn"></td><td>待验证的值，会自动转为string类型</td></tr>
                 
-                <tr><td class="f-wsn"><code>rules</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td>验证规则集</td></tr>
+                <tr><td class="f-wsn"><code>rules</code></td><td class="f-wsn">Object</td><td class="f-wsn"></td><td>验证规则集</td></tr>
                 
             
         </tbody>
@@ -631,21 +637,21 @@
 
 var index = 0;
 (function (index) {
-    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n</form>';
+    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
-            rules: [{ type: 'isNot', trigger: 'input+blur', message: '以字母开头', options: /^[^a-zA-Z]/ }, { type: 'isNot', trigger: 'input+blur', message: '字母、数字或中划线组成', options: /[^a-zA-Z0-9-]/ }, { type: 'isNot', trigger: 'blur', message: '以字母或数字结尾', options: /[^a-zA-Z0-9]$/ }, { type: 'isRequired', trigger: 'blur', message: '请输入用户名' }, { type: 'isLength', trigger: 'blur', message: '不得少于4个字符', options: { min: 4 } }]
+            rules: [{ type: 'is', trigger: 'input+blur', message: '以字母开头', options: /^[a-zA-Z]/ }, { type: 'is', trigger: 'input+blur', message: '字母、数字或中划线组成', options: /^[a-zA-Z0-9-]+$/ }, { type: 'is', trigger: 'blur', message: '以字母或数字结尾', options: /[a-zA-Z0-9]$/ }, { type: 'isRequired', trigger: 'blur', message: '请输入用户名' }, { type: 'isLength', trigger: 'blur', message: '不得少于4个字符', options: { min: 4 } }]
         }
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">isRequired<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[0]} maxlength=12 placeholder="试一试什么都不要输入" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isFilled<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[1]} maxlength=12 placeholder="试一试输入空格" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">is：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[2]} maxlength=12 placeholder="以数字开头" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isNot：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[3]} maxlength=12 placeholder="不能以数字开头" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">method：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[4]} maxlength=12 placeholder="验证码为6543" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">async：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[5]} maxlength=12 placeholder="用户名user已被使用" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isLength：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[6]} maxlength=12 placeholder="4~8个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isEmail：</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[7]} maxlength=12 placeholder="输入一个电子邮箱" />\n        </span>\n    </div>\n</form>';
+    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">isRequired<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[0]} maxlength="12" placeholder="\u8BD5\u4E00\u8BD5\u4EC0\u4E48\u90FD\u4E0D\u8981\u8F93\u5165" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isFilled<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[1]} maxlength="12" placeholder="\u8BD5\u4E00\u8BD5\u8F93\u5165\u7A7A\u683C" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">is\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[2]} maxlength="12" placeholder="\u4EE5\u6570\u5B57\u5F00\u5934" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isNot\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[3]} maxlength="12" placeholder="\u4E0D\u80FD\u4EE5\u6570\u5B57\u5F00\u5934" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">method\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[4]} maxlength="12" placeholder="\u9A8C\u8BC1\u7801\u4E3A6543" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">async\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[5]} maxlength="12" placeholder="\u7528\u6237\u540Duser\u5DF2\u88AB\u4F7F\u7528" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isLength\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[6]} maxlength="12" placeholder="4~8\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">isEmail\uFF1A</label>\n        <span class="form_field">\n            <inputField size="lgw" rules={rules[7]} maxlength="12" placeholder="\u8F93\u5165\u4E00\u4E2A\u7535\u5B50\u90AE\u7BB1" />\n        </span>\n    </div>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
-            rules: [[{ type: 'isRequired', trigger: 'input+blur', message: '该值不能为空' }], [{ type: 'isFilled', trigger: 'input+blur', message: '该值不能为空' }], [{ type: 'is', trigger: 'input+blur', message: '以数字开头', options: /^\d/ }], [{ type: 'isNot', trigger: 'input+blur', message: '不能以数字开头', options: /^\d/ }], [{ type: 'method', trigger: 'input+blur', message: '请输入正确的验证码', options: function options(value) {
+            rules: [[{ type: 'isRequired', trigger: 'input+blur', message: '该值不能为空' }], [{ type: 'isFilled', trigger: 'input+blur', message: '该值不能全是空格' }], [{ type: 'is', trigger: 'input+blur', message: '以数字开头', options: /^\d/ }], [{ type: 'isNot', trigger: 'input+blur', message: '不能以数字开头', options: /^\d/ }], [{ type: 'method', trigger: 'input+blur', message: '请输入正确的验证码', options: function options(value) {
                     return value === '6543';
                 } }], [{ type: 'async', trigger: 'input+blur', message: '该用户名已被使用', options: function options(value, done) {
                     setTimeout(function () {
@@ -657,13 +663,13 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" on-click={this.submit()}>提交</a></span>\n    </div>\n</validation>\n</form>';
+    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" on-click={this.submit()}>\u63D0\u4EA4</a></span>\n    </div>\n</validation>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             rules: {
-                name: [{ type: 'isFilled', message: '请输入用户名！' }, { type: 'isLength', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', message: '请输入邮箱！' }, { type: 'isEmail', message: '邮箱格式不正确！' }]
+                name: [{ type: 'isRequired', message: '请输入用户名！' }, { type: 'isFilled', message: '请输入合适的用户名！' }, { type: 'isLength', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', message: '请输入邮箱！' }, { type: 'isEmail', message: '邮箱格式不正确！' }]
             }
         },
         submit: function submit() {
@@ -675,47 +681,47 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n</form>';
+    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             rules: {
-                name: [{ type: 'isFilled', trigger: 'blur', message: '请输入用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }]
+                name: [{ type: 'isRequired', trigger: 'blur', message: '请输入用户名！' }, { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }]
             }
         }
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n</form>';
+    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             rules: {
-                name: [{ type: 'isFilled', trigger: 'blur', message: '请输入用户名！' }, { type: 'isLength', trigger: 'input+blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input', message: '邮箱格式不正确！' }]
+                name: [{ type: 'isRequired', trigger: 'blur', message: '请输入用户名！' }, { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' }, { type: 'isLength', trigger: 'input+blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input', message: '邮箱格式不正确！' }]
             }
         }
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">姓名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField maxlength=4 placeholder="不超过4个字符" />\n        </span>\n    </div>\n</form>';
+    var template = '<form class="m-form">\n    <div class="form_item">\n        <label class="form_label">\u59D3\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField maxlength="4" placeholder="\u4E0D\u8D85\u8FC74\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n</form>';
     var component = new RGUI.Component({
         template: template
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">手机号码：</label>\n        <span class="form_field">\n            <inputField rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" on-click={this.submit()}>提交</a></span>\n    </div>\n</validation>\n</form>';
+    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u624B\u673A\u53F7\u7801\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.phone} maxlength="11" placeholder="\u8BF7\u8F93\u5165\u624B\u673A\u53F7\u7801" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" on-click={this.submit()}>\u63D0\u4EA4</a></span>\n    </div>\n</validation>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             rules: {
-                name: [{ type: 'isFilled', trigger: 'blur', message: '请输入用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }],
-                phone: [{ type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ }]
+                name: [{ type: 'isRequired', trigger: 'blur', message: '请输入用户名！' }, { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', trigger: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }],
+                phone: [{ type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^\d{11}$/ }]
             }
         },
         submit: function submit() {
@@ -727,25 +733,27 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField value={user.name} rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField value={user.email} rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">手机号码：</label>\n        <span class="form_field">\n            <inputField rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={this.submit()}>提交</a></span>\n    </div>\n</validation>\n</form>';
+    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField value={user.name} rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField value={user.email} rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u624B\u673A\u53F7\u7801\uFF1A</label>\n        <span class="form_field">\n            <inputField rules={rules.phone} maxlength="11" placeholder="\u8BF7\u8F93\u5165\u624B\u673A\u53F7\u7801" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={canSubmit && this.submit()}>\u63D0\u4EA4</a></span>\n    </div>\n</validation>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             user: {},
             rules: {
-                name: [{ type: 'isFilled', trigger: 'blur', mute: 'blur', message: '请输入用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', trigger: 'blur', mute: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }],
-                phone: [{ type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ }]
-            }
+                name: [{ type: 'isRequired', trigger: 'blur', mute: 'blur', message: '请输入用户名！' }, { type: 'isFilled', trigger: 'blur', message: '请输入合适的用户名！' }, { type: 'isLength', trigger: 'blur', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', trigger: 'blur', mute: 'blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'blur', message: '邮箱格式不正确！' }],
+                phone: [{ type: 'is', trigger: 'blur', message: '手机号码格式不正确！', options: /^\d{11}$/ }]
+            },
+            canSubmit: false
         },
-        computed: {
-            canSubmit: function canSubmit() {
-                return this.data.user.name && this.data.user.email;
-            }
-        },
-        submit: function submit() {
-            if (!this.$get('canSubmit')) return;
+        config: function config() {
+            var _this = this;
 
+            this.$watch('user.name && user.email', function (canSubmit) {
+                return _this.data.canSubmit = canSubmit;
+            });
+        },
+
+        submit: function submit() {
             this.$refs.validation.$once('validate', function (conclusion) {
                 if (conclusion.success) alert('提交成功！');
             }).validate();
@@ -754,21 +762,22 @@ var index = 0;
     component && component.$inject($$(".m-example")[index]);
 })(index++);
 (function (index) {
-    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">用户名<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField value={user.name} rules={rules.name} maxlength=12 placeholder="4~12个字符" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">邮箱<span class="form_required">*</span>：</label>\n        <span class="form_field">\n            <inputField value={user.email} rules={rules.email} maxlength=20 placeholder="请输入邮箱" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">手机号码：</label>\n        <span class="form_field">\n            <inputField state="success" rules={rules.phone} maxlength=11 placeholder="请输入手机号码" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={this.submit()}>提交</a></span>\n    </div>\n</validation>\n</form>';
+    var template = '<form class="m-form">\n<validation ref="validation">\n    <div class="form_item">\n        <label class="form_label">\u7528\u6237\u540D<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField value={user.name} rules={rules.name} maxlength="12" placeholder="4~12\u4E2A\u5B57\u7B26" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u90AE\u7BB1<span class="form_required">*</span>\uFF1A</label>\n        <span class="form_field">\n            <inputField value={user.email} rules={rules.email} maxlength="20" placeholder="\u8BF7\u8F93\u5165\u90AE\u7BB1" />\n        </span>\n    </div>\n    <div class="form_item">\n        <label class="form_label">\u624B\u673A\u53F7\u7801\uFF1A</label>\n        <span class="form_field">\n            <inputField state="success" rules={rules.phone} maxlength="11" placeholder="\u8BF7\u8F93\u5165\u624B\u673A\u53F7\u7801" />\n        </span>\n    </div>\n    <div class="form_item">\n        <span class="form_field"><a class="u-btn u-btn-primary" z-dis={!canSubmit} on-click={this.submit()}>\u63D0\u4EA4</a></span>\n    </div>\n</validation>\n</form>';
     var component = new RGUI.Component({
         template: template,
         data: {
             user: {},
             rules: {
-                name: [{ type: 'isFilled', trigger: 'input+blur', mute: 'input+blur', message: '请输入用户名！' }, { type: 'isLength', trigger: 'input+blur', mute: 'input', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
-                email: [{ type: 'isFilled', trigger: 'input+blur', mute: 'input+blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input+blur', mute: 'input', message: '邮箱格式不正确！' }],
-                phone: [{ type: 'is', trigger: 'input+blur', message: '手机号码格式不正确！', options: /^$|^\d{11}$/ }]
-            }
+                name: [{ type: 'isRequired', trigger: 'input+blur', mute: 'input+blur', message: '请输入用户名！' }, { type: 'isFilled', trigger: 'input+blur', mute: 'input', message: '请输入合适的用户名！' }, { type: 'isLength', trigger: 'input+blur', mute: 'input', message: '请输入4~12个字符！', options: { min: 4, max: 12 } }],
+                email: [{ type: 'isRequired', trigger: 'input+blur', mute: 'input+blur', message: '请输入邮箱！' }, { type: 'isEmail', trigger: 'input+blur', mute: 'input', message: '邮箱格式不正确！' }],
+                phone: [{ type: 'is', trigger: 'input+blur', message: '手机号码格式不正确！', options: /^\d+$/ }]
+            },
+            canSubmit: false
         },
         computed: {
             canSubmit: function canSubmit() {
                 return this.$refs.validation && this.$refs.validation.fields.every(function (field) {
-                    return field.data.state === 'success';
+                    return field.data._state === 'success';
                 });
             }
         },
