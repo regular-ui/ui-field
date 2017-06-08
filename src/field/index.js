@@ -34,6 +34,7 @@ const Field = Component.extend({
         while ($outer) {
             if ($outer instanceof Validation) {
                 $outer.fields.push(this);
+                this.validation = $outer;
                 break;
             }
             $outer = $outer.$outer;
@@ -44,10 +45,10 @@ const Field = Component.extend({
      * @override
      */
     destroy() {
-        if (this.$outer && this.$outer instanceof Validation) {
+        if (this.validation) {
             // 从$outer组件的列表中删除自己
-            const index = this.$outer.fields.indexOf(this);
-            ~index && this.$outer.fields.splice(index, 1);
+            const index = this.validation.fields.indexOf(this);
+            ~index && this.validation.fields.splice(index, 1);
         }
         this.supr();
     },
