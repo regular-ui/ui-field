@@ -44,6 +44,18 @@ const Field = Component.extend({
      * @protected
      * @override
      */
+    init() {
+        // 1.当组件是disabled，2.组件值为空且不是必须项 ； 验证通过
+        if (this.data.disabled || ( this.data.value === '' && !!!this.data.rules.find((ele)=>ele.type === 'isRequired') ) ) {
+            this.data.state = 'success';
+            this.data._state = 'success';
+        }
+        this.supr();
+    },
+    /**
+     * @protected
+     * @override
+     */
     destroy() {
         if (this.validation) {
             // 从$outer组件的列表中删除自己
