@@ -128,9 +128,9 @@ Validation.validate = function (value, rules, callback) {
         else if (rule.type === 'isNot')
             done.call(rule, !rule.options.test(value));
         else if (rule.type === 'method')
-            done.call(rule, !!rule.options(value));
+            done.call(rule, !!rule.options(value, rule));
         else if (rule.type === 'async')
-            rule.options && rule.options(value, done.bind(rule));
+            rule.options && rule.options(value, done.bind(rule), rule);
         else
             done.call(rule, validator[rule.type](value, rule.options));
     }
