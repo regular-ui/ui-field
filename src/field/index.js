@@ -46,7 +46,7 @@ const Field = Component.extend({
      */
     init() {
         // 1.当组件是disabled，2.组件值为空且不是必须项 ； 验证通过
-        if (this.data.disabled || ( this.data.value === '' && !!!this.data.rules.find((ele)=>ele.type === 'isRequired') ) ) {
+        if (this.data.disabled || (this.data.value === '' && !this.data.rules.find((ele) => ele.type === 'isRequired'))) {
             this.data.state = 'success';
             this.data._state = 'success';
         }
